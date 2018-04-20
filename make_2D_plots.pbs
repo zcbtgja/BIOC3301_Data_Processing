@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+##SBATCH --reservation=cbmucl
+#Load modules to run python
+module load eb
+module load Miniconda2
+source deactivate
+# loading virtualenv
+echo "loading virtualenv"
+source activate qiime1
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+echo "making 2D plots"
+time make_2d_plots.py -i cdoutGG_HPC_nocompare_35000/bdiv_even35000/weighted_unifrac_pc.txt -m map_final.txt -o cdoutGG_HPC_nocompare_35000/2D_PCoA
+source deactivate

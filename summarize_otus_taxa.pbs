@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+##SBATCH --reservation=cbmucl
+#Load modules to run python
+module load eb
+module load Miniconda2
+source deactivate
+# loading virtualenv
+echo "loading virtualenv"
+source activate qiime1
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+echo "splitting otu table"
+time summarize_taxa.py -i otus/otus_filtered_n2.biom -L 1,2,3,4,5,6 -m map_final.txt -o otus/summarized_otus_n2
+source deactivate

@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+##SBATCH --reservation=cbmucl
+#Load modules to run python
+module load eb
+module load Miniconda2
+source deactivate
+# loading virtualenv
+echo "loading virtualenv"
+source activate qiime1
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+echo "running GS"
+time -i otus/summarized_otus_n2/otus_filtered_n2_L2.biom -m map_final.txt -s kruskal_wallis -c SamplePhosphorus -o Stats/Group_Signif/GS_kruskal_P.txt
+source deactivate

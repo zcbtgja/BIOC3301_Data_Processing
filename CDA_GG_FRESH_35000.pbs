@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+##SBATCH --reservation=cbmucl
+#Load modules to run python
+module load eb
+module load Miniconda2
+source deactivate
+# loading virtualenv
+echo "loading virtualenv"
+source activate qiime1
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+echo "running CDA"
+time core_diversity_analyses.py --recover_from_failure -o cdoutGG_HPC_nocompare_35000 -i otus/otus_filtered_n2.biom -m map_final.txt -t otus/97_otus.tree -e 35000 -a -O 24
+source deactivate

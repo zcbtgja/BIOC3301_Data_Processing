@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+##SBATCH --reservation=cbmucl
+#Load modules to run python
+module load eb
+module load Miniconda2
+source deactivate
+# loading virtualenv
+echo "loading virtualenv"
+source activate qiime1
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+echo "running ANOSIM"
+time compare_categories.py --method anosim -i cdoutGG_HPC_nocompare_35000/bdiv_even35000/unweighted_unifrac_dm.txt -m map_final.txt -c SampleMoisture -o Stats/ANOSIM_35000_unweighted/Moisture
+source deactivate
