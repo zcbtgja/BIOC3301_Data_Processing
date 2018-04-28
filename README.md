@@ -1,5 +1,7 @@
 # BIOC3301_Data_Processing
+
 QIIME Illumina data processing workflow
+
 To join forward and reverse Illumina reads:
 join_paired_ends.pbs
 
