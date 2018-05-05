@@ -2,6 +2,9 @@
 
 QIIME Illumina data processing workflow
 
+Map file used for analysis:
+Map.tsv
+
 To join forward and reverse Illumina reads:
 join_paired_ends.pbs
 
