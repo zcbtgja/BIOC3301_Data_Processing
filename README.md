@@ -11,7 +11,7 @@ join_paired_ends.pbs
 Demultiplex sequences:
 split_libraries_joined.pbs
 
-Closed OTUs were picked using Greengenes 13_8:
+Closed OTUs were picked using Greengenes 13_8 (2006):
 Otus_closed_GG.pbs
 
 Singleton OTUs were removed:
